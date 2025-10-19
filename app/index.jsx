@@ -11,7 +11,12 @@ const Home = () => {
       <Text style={{ marginTop: 10, marginBottom: 30 }}>
         Welcome to Shelfie App!
       </Text>
-      <Link href="/about">Go to About Page</Link>
+      <Link href="/about" style={styles.link}>
+        Go to About Page
+      </Link>
+      <Link href="/contact" style={styles.link}>
+        Go to Contact Page
+      </Link>
     </View>
   );
 };
@@ -31,5 +36,9 @@ const styles = StyleSheet.create({
   },
   img: {
     marginVertical: 20,
+  },
+  link: {
+    marginVertical: 10,
+    borderBottomWidth: 1,
   },
 });
