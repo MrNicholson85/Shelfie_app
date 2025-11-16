@@ -20,11 +20,11 @@ const Home = () => {
         Welcome to Shelfie App!
       </ThemedText>
       <Spacer/>
-      <Link href="/about" style={styles.link}>
-        <ThemedText>Go to About Page</ThemedText>
+      <Link href="/login" style={styles.link}>
+        <ThemedText>Go to Login Page</ThemedText>
       </Link>
-      <Link href="/contact" style={styles.link}>
-        <ThemedText>Go to Contact Page</ThemedText>
+      <Link href="/register" style={styles.link}>
+        <ThemedText>Go to Register Page</ThemedText>
       </Link>
     </ThemedView>
   );

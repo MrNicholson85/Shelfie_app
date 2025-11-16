@@ -17,24 +17,14 @@ const RootLayout = () => {
           headerTitleStyle: { fontWeight: "bold" },
         }}
       >
+      <Stack.Screen name="(auth)" options={{ headerShown: false, animation: 'none' }} />
         <Stack.Screen
           name="index"
           options={{
             headerTitle: "Shelfie App",
           }}
         />
-        <Stack.Screen
-          name="about"
-          options={{
-            headerTitle: "About Shelfie App",
-          }}
-        />
-        <Stack.Screen
-          name="contact"
-          options={{
-            headerTitle: "Contact Shelfie App",
-          }}
-        />
+        
       </Stack>
     </>
   );
