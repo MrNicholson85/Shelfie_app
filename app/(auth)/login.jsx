@@ -15,7 +15,6 @@ const Login = () => {
     }
     return (
     <ThemedView style={styles.container}>
-        <Spacer />
 
         <ThemedText title={true} style={styles.title}>Login to you account</ThemedText>
         
