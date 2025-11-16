@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router'
 import { useColorScheme } from 'react-native'
 import { Colors } from '../../constants/Colors'
+import { Ionicons } from '@expo/vector-icons'
 
 const DashBoardLayout = () => {
     const colorScheme = useColorScheme(); // Placeholder for color scheme detection
@@ -19,9 +20,33 @@ const DashBoardLayout = () => {
             tabBarInactiveTintColor: theme.iconColor,
         }}
     >
-    <Tabs.Screen name="profile" options={{ title: 'Profile' }} />
-    <Tabs.Screen name="books" options={{ title: 'Books' }} />
-    <Tabs.Screen name="create" options={{ title: 'Create' }} />
+    <Tabs.Screen name="profile" options={{ title: 'Profile', tabBarIcon: ({focused, color}) => (
+        <Ionicons 
+            name={focused ? "person" : "person-outline"}
+            size={24}
+            color={color}
+        />
+        )}}
+    />
+    <Tabs.Screen
+        name="books"
+        options={{ title: 'Books', tabBarIcon: ({focused, color}) => (
+            <Ionicons 
+                name={focused ? "book" : "book-outline"}
+                size={24}
+                color={color}
+            />
+        ) }}
+    />
+    <Tabs.Screen 
+    name="create" 
+    options={{ title: 'Create', tabBarIcon: ({focused, color}) => (
+        <Ionicons 
+            name={focused ? "create" : "create-outline"}
+            size={24}
+            color={color}
+        />
+    ) }} />
     </Tabs>
   )
 }
