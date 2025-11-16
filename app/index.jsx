@@ -6,22 +6,25 @@ import Logo from "../assets/img/logo_light.png";
 import ThemedView from "../components/ThemedView";
 import ThemedLogo from "../components/ThemedLogo";
 import Spacer from "../components/Spacer";
+import ThemedText from "../components/ThemedText";
 
 const Home = () => {
   return (
     <ThemedView style={styles.container}>
       <ThemedLogo style={styles.img} />
-      <Text style={styles.title}>Home Page</Text>
+      <Spacer height={20} />
+      <ThemedText style={styles.title}>Home Page</ThemedText>
 
-      <Spacer/>
-      <Text>
+      <Spacer height={10}/>
+      <ThemedText style={styles.title} title={true}>
         Welcome to Shelfie App!
-      </Text>
+      </ThemedText>
+      <Spacer/>
       <Link href="/about" style={styles.link}>
-        Go to About Page
+        <ThemedText>Go to About Page</ThemedText>
       </Link>
       <Link href="/contact" style={styles.link}>
-        Go to Contact Page
+        <ThemedText>Go to Contact Page</ThemedText>
       </Link>
     </ThemedView>
   );
@@ -38,9 +41,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 18,
-  },
-  img: {
-    marginVertical: 20,
   },
   link: {
     marginVertical: 10,
