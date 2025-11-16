@@ -16,7 +16,7 @@ const Register = () => {
     <ThemedView style={styles.container}>
         <ThemedText title={true} style={styles.title}>register for an account</ThemedText>
 
-        <Spacer />
+        <Spacer height={0} />
         
         <ThemedButton onPress={handleSubmit} title="Register">
             <ThemedText style={styles.buttonText}>Register</ThemedText>
