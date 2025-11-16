@@ -20,31 +20,31 @@ const DashBoardLayout = () => {
             tabBarInactiveTintColor: theme.iconColor,
         }}
     >
-    <Tabs.Screen name="profile" options={{ title: 'Profile', tabBarIcon: ({focused}) => (
+    <Tabs.Screen name="profile" options={{ title: 'Profile', tabBarIcon: ({focused, color}) => (
         <Ionicons 
             name={focused ? "person" : "person-outline"}
             size={24}
-            color={focused ? theme.iconColorFocused : theme.iconColor}
+            color={color}
         />
         )}}
     />
     <Tabs.Screen
         name="books"
-        options={{ title: 'Books', tabBarIcon: ({focused}) => (
+        options={{ title: 'Books', tabBarIcon: ({focused, color}) => (
             <Ionicons 
                 name={focused ? "book" : "book-outline"}
                 size={24}
-                color={focused ? theme.iconColorFocused : theme.iconColor}
+                color={color}
             />
         ) }}
     />
     <Tabs.Screen 
     name="create" 
-    options={{ title: 'Create', tabBarIcon: ({focused}) => (
+    options={{ title: 'Create', tabBarIcon: ({focused, color}) => (
         <Ionicons 
             name={focused ? "create" : "create-outline"}
             size={24}
-            color={focused ? theme.iconColorFocused : theme.iconColor}
+            color={color}
         />
     ) }} />
     </Tabs>
