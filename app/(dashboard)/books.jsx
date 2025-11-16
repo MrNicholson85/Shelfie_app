@@ -8,8 +8,12 @@ import Spacer from "../../components/Spacer";
 const Books = () => {
     return (
         <ThemedView style={styles.container} safe={true}>
-            <ThemedText title={true} style={styles.title}>Books</ThemedText>
-            <Spacer height={0} />
+
+            <Spacer />
+            <ThemedText title={true} style={styles.title}>
+                Your Reading List
+            </ThemedText>
+
         </ThemedView>
     );
 };
