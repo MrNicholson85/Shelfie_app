@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Link } from "expo-router";
+
 import Logo from "../assets/img/logo_light.png";
-import React from "react";
+
+import ThemedView from "../components/ThemedView";
 
 const Home = () => {
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <Image source={Logo} style={styles.img} />
       <Text style={styles.title}>Home Page</Text>
       <Text style={{ marginTop: 10, marginBottom: 30 }}>
@@ -17,7 +19,7 @@ const Home = () => {
       <Link href="/contact" style={styles.link}>
         Go to Contact Page
       </Link>
-    </View>
+    </ThemedView>
   );
 };
 
