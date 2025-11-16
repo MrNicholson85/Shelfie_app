@@ -4,13 +4,17 @@ import { Link } from "expo-router";
 import Logo from "../assets/img/logo_light.png";
 
 import ThemedView from "../components/ThemedView";
+import ThemedLogo from "../components/ThemedLogo";
+import Spacer from "../components/Spacer";
 
 const Home = () => {
   return (
     <ThemedView style={styles.container}>
-      <Image source={Logo} style={styles.img} />
+      <ThemedLogo style={styles.img} />
       <Text style={styles.title}>Home Page</Text>
-      <Text style={{ marginTop: 10, marginBottom: 30 }}>
+
+      <Spacer/>
+      <Text>
         Welcome to Shelfie App!
       </Text>
       <Link href="/about" style={styles.link}>
@@ -28,7 +32,6 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
