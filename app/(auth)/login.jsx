@@ -2,6 +2,7 @@ import { StyleSheet, Pressable, Keyboard, TouchableWithoutFeedback } from 'react
 import { Link } from 'expo-router'
 import { Colors } from '../../constants/Colors'
 import { useState } from 'react'
+import { useUser } from '../../hooks/useUser'
 
 //Themed Components
 import ThemedText from '../../components/ThemedText'
@@ -15,9 +16,14 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = () => {
-        // Handle login logic here
-        console.log('login form submitted', { email, password });
+    const {login} = useUser();
+    
+    const handleSubmit = async () => {
+        try {
+            await login(email, password);
+        } catch (error) {
+            console.error('Error logging in:', error);
+        }
     }
     return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
