@@ -18,7 +18,8 @@ export function UserProvider({children}) {
             setUser(userInfo);
             console.log('User logged in successfully:', userInfo);
         } catch (error) {
-            console.error('Error logging in:', error);
+            throw Error(error.message);
+            
         }
     }
 

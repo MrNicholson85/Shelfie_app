@@ -11,18 +11,41 @@ import Spacer from '../../components/Spacer'
 import ThemedButton from '../../components/ThemedButton'
 import ThemedTextInput from '../../components/ThemedTextInput'
 
-
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
 
     const {login} = useUser();
     
+    const getErrorMessage = (errorMessage) => {
+        if (errorMessage.includes('Invalid credentials')) {
+            return 'Invalid email or password. Please try again.';
+        }
+        if (errorMessage.includes('user (role: guests) missing scope')) {
+            return 'Invalid email or password. Please check your credentials.';
+        }
+        if (errorMessage.includes('Invalid email')) {
+            return 'Please enter a valid email address.';
+        }
+        if (errorMessage.includes('Password')) {
+            return 'Password must be at least 8 characters long.';
+        }
+        if (errorMessage.includes('network') || errorMessage.includes('Network')) {
+            return 'Network error. Please check your internet connection.';
+        }
+        if (errorMessage.includes('Too many requests')) {
+            return 'Too many login attempts. Please try again later.';
+        }
+        return 'Login failed. Please try again.';
+    };
+    
     const handleSubmit = async () => {
+        setError(null);
         try {
             await login(email, password);
         } catch (error) {
-            console.error('Error logging in:', error);
+            setError(getErrorMessage(error.message));
         }
     }
     return (
@@ -72,6 +95,12 @@ const Login = () => {
         </ThemedButton>
 
             <Spacer height={100} />
+            
+            {
+                error && <ThemedText style={styles.errorText}>{error}</ThemedText>
+            }
+            
+            <Spacer height={20} />
 
         <Link href='/register'>
             <ThemedText style={{textAlign: 'center'}}>Or Register Here</ThemedText>
@@ -113,5 +142,16 @@ const styles = StyleSheet.create({
         fontSize:24,
         textTransform: 'uppercase',
         paddingHorizontal: 50,
+    },
+    errorText: {
+        color: Colors.warning,
+        padding: 10,
+        backgroundColor: '#f5c1c8',
+        borderColor: Colors.warning,
+        borderWidth: 1,
+        borderRadius: 6,
+        marginHorizontal: 10,
+        textAlign: 'center',
+        marginBottom: 20,
     },
 })
