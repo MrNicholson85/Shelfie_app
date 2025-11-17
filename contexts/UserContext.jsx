@@ -9,17 +9,12 @@ export function UserProvider({children}) {
 
     async function login(email, password) {
         try {
-            await account.createSession(
-                ID.unique(),
-                email,
-                password
-            );
+            await account.createEmailPasswordSession(email, password);
             const userInfo = await account.get();
             setUser(userInfo);
             console.log('User logged in successfully:', userInfo);
         } catch (error) {
-            throw Error(error.message);
-            
+            throw error;
         }
     }
 
