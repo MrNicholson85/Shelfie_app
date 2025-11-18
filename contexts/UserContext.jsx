@@ -51,7 +51,8 @@ export function UserProvider({children}) {
             const userInfo = await account.get();
             setUser(userInfo);
         } catch (error) {
-            console.error('Error fetching initial user:', error);
+            // No active session - user is not logged in (this is normal)
+            setUser(null);
         } finally {
             setAuthChecked(true);
         }
@@ -62,7 +63,7 @@ export function UserProvider({children}) {
     }, []);
 
     return (
-        <UserContext.Provider value={{user, setUser, login, register, logout}}>
+        <UserContext.Provider value={{user, setUser, login, register, logout, authChecked}}>
             {children}
         </UserContext.Provider>
     )

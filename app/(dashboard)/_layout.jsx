@@ -2,52 +2,55 @@ import { Tabs } from 'expo-router'
 import { useColorScheme } from 'react-native'
 import { Colors } from '../../constants/Colors'
 import { Ionicons } from '@expo/vector-icons'
+import UserOnly from '../../components/auth/UserOnly'
 
 const DashBoardLayout = () => {
     const colorScheme = useColorScheme(); // Placeholder for color scheme detection
     const theme = Colors[colorScheme] ?? Colors.light;
 
   return (
-    <Tabs
-        screenOptions={{
-            headerShown: false,
-            tabBarStyle: {
-                backgroundColor: theme.navBackground,
-                paddingTop: 10,
-                height: 90,
-            },
-            tabBarActiveTintColor: theme.iconColorFocused,
-            tabBarInactiveTintColor: theme.iconColor,
-        }}
-    >
-    <Tabs.Screen name="profile" options={{ title: 'Profile', tabBarIcon: ({focused, color}) => (
-        <Ionicons 
-            name={focused ? "person" : "person-outline"}
-            size={24}
-            color={color}
-        />
-        )}}
-    />
-    <Tabs.Screen
-        name="books"
-        options={{ title: 'Books', tabBarIcon: ({focused, color}) => (
+    <UserOnly>
+        <Tabs
+            screenOptions={{
+                headerShown: false,
+                tabBarStyle: {
+                    backgroundColor: theme.navBackground,
+                    paddingTop: 10,
+                    height: 90,
+                },
+                tabBarActiveTintColor: theme.iconColorFocused,
+                tabBarInactiveTintColor: theme.iconColor,
+            }}
+        >
+        <Tabs.Screen name="profile" options={{ title: 'Profile', tabBarIcon: ({focused, color}) => (
             <Ionicons 
-                name={focused ? "book" : "book-outline"}
+                name={focused ? "person" : "person-outline"}
                 size={24}
                 color={color}
             />
-        ) }}
-    />
-    <Tabs.Screen 
-    name="create" 
-    options={{ title: 'Create', tabBarIcon: ({focused, color}) => (
-        <Ionicons 
-            name={focused ? "create" : "create-outline"}
-            size={24}
-            color={color}
+            )}}
         />
-    ) }} />
-    </Tabs>
+        <Tabs.Screen
+            name="books"
+            options={{ title: 'Books', tabBarIcon: ({focused, color}) => (
+                <Ionicons 
+                    name={focused ? "book" : "book-outline"}
+                    size={24}
+                    color={color}
+                />
+            ) }}
+        />
+        <Tabs.Screen 
+        name="create" 
+        options={{ title: 'Create', tabBarIcon: ({focused, color}) => (
+            <Ionicons 
+                name={focused ? "create" : "create-outline"}
+                size={24}
+                color={color}
+            />
+        ) }} />
+        </Tabs>
+    </UserOnly>
   )
 }
 
