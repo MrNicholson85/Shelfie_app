@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { account } from "../lib/appwite";
 import {ID} from 'react-native-appwrite';
 
@@ -6,10 +6,14 @@ export const UserContext = createContext(null);
 
 export function UserProvider({children}) {
     const [user, setUser] = useState(null);
+    const [authChecked, setAuthChecked] = useState(false);
 
     async function login(email, password) {
         try {
-            await account.createEmailPasswordSession(email, password);
+            await account.createEmailPasswordSession({
+                email: email,
+                password: password
+            });
             const userInfo = await account.get();
             setUser(userInfo);
             console.log('User logged in successfully:', userInfo);
@@ -41,6 +45,21 @@ export function UserProvider({children}) {
             console.error('Error logging out:', error);
         }
     }
+
+    async function getInitialUser() {
+        try {
+            const userInfo = await account.get();
+            setUser(userInfo);
+        } catch (error) {
+            console.error('Error fetching initial user:', error);
+        } finally {
+            setAuthChecked(true);
+        }
+    }
+
+    useEffect(() => {
+        getInitialUser();
+    }, []);
 
     return (
         <UserContext.Provider value={{user, setUser, login, register, logout}}>
