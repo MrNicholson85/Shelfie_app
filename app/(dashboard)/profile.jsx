@@ -14,7 +14,7 @@ const Profile = () => {
         <ThemedView style={styles.container}>
 
             <ThemedText title={true} style={styles.title}>
-                Your Email
+                {user.email}'s Profile
             </ThemedText>
 
             <ThemedText>
