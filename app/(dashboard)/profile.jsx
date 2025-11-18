@@ -29,7 +29,7 @@ const Profile = () => {
             
             <Spacer/>
 
-            <ThemedButton button={true} onPress={logout} >
+            <ThemedButton style={styles.logoutBtn} button={true} onPress={logout} >
                 <ThemedText>Logout</ThemedText>
             </ThemedButton>
 
@@ -49,5 +49,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         marginBottom: 30,
+    },
+    logoutBtn: {
+        paddingHorizontal: 40,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
