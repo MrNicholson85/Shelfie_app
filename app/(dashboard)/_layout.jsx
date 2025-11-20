@@ -49,6 +49,10 @@ const DashBoardLayout = () => {
                 color={color}
             />
         ) }} />
+        <Tabs.Screen 
+            name="books/[id]"
+            options={{ href: null }}
+        />
         </Tabs>
     </UserOnly>
   )
